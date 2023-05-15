@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # 自定义app
     'customer.apps.CustomerConfig',
+    'userprofile.apps.UserprofileConfig'
 
     # 测试
     # 'fake_data',
