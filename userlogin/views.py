@@ -11,11 +11,14 @@ from utils.fbmsg import FBMsg
 
 
 def test(request):
-    return Response(FBMsg.ret())
+    return JsonResponse(FBMsg.ret())
 
 
 def login(request, *args, **kwargs):
-    post_data = json.loads(request.body.decode())
+    # post_data = json.loads(request.body.decode())
+    post_data = {
+        "name": 'zz',
+        "password": '123123', }
     data = {
         "name": post_data.get('name'),
         "password": post_data.get('password'),
