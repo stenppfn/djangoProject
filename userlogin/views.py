@@ -1,10 +1,17 @@
-from django.http import JsonResponse
-from utils.fbmsg import FBMsg
+import json
+
 from django.contrib import auth
 from django.contrib.auth.models import User
-import json
-from userprofile.models import Users
+from django.http import JsonResponse
+from rest_framework.response import Response
+
 from staff.models import ListModel as staff
+from userprofile.models import Users
+from utils.fbmsg import FBMsg
+
+
+def test(request):
+    return Response(FBMsg.ret())
 
 
 def login(request, *args, **kwargs):
