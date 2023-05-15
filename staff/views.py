@@ -12,6 +12,9 @@ from rest_framework import viewsets
 # from django.http import StreamingHttpResponse
 # from .files import FileRenderCN, FileRenderEN
 # from rest_framework.settings import api_settings
+from rest_framework.exceptions import APIException
+from rest_framework.response import Response
+
 from staff import serializers
 from staff.models import ListModel
 from utils.fbmsg import FBMsg
@@ -73,3 +76,16 @@ class APIViewSet(viewsets.ModelViewSet):
         else:
             return self.http_method_not_allowed(request=self.request)
 
+    def create(self, request, *args, **kwargs):
+        # data = self.request.data
+        # data['openid'] = self.request.auth.openid
+        data = {'staff_name': 'zz'}
+        data['openid'] = '6608c32f0a6e75ce0374df6123b4d1d4'
+        if ListModel.objects.filter(openid=data['openid'], staff_name=data['staff_name'], is_delete=False).exists():
+            raise APIException({"detail": "Data exists"})
+        else:
+            serializer = self.get_serializer(data=data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=200, headers=headers)
