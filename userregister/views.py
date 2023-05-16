@@ -158,15 +158,15 @@ def register(request, *args, **kwargs):
                             data.pop('password2', '')
                             ret['data'] = data
 
-                            # from company.models import ListModel as company
-                            # company.objects.create(openid=transaction_code,
-                            #                        company_name='GreaterWMS',
-                            #                        company_city=str(random.choice(randomcity)),
-                            #                        company_address='People’s Square # 666 Room 1F',
-                            #                        company_contact=str(randomPhone()),
-                            #                        company_manager='Elvis.Shi',
-                            #                        creater='DemoData'
-                            #                        )
+                            from company.models import ListModel as company
+                            company.objects.create(openid=transaction_code,
+                                                   company_name='GreaterWMS',
+                                                   company_city=str(random.choice(randomcity)),
+                                                   company_address='People’s Square # 666 Room 1F',
+                                                   company_contact=str(randomPhone()),
+                                                   company_manager='Elvis.Shi',
+                                                   creater='DemoData'
+                                                   )
                             # from warehouse.models import ListModel as warehouse
                             # warehouse.objects.create(openid=transaction_code,
                             #                          warehouse_name='Center Warehouse',

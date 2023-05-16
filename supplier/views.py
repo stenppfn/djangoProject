@@ -68,8 +68,10 @@ class APIViewSet(viewsets.ModelViewSet):
             return self.http_method_not_allowed(request=self.request)
 
     def create(self, request, *args, **kwargs):
-        data = self.request.data
-        data['openid'] = self.request.auth.openid
+        # data = self.request.data
+        # data['openid'] = self.request.auth.openid
+        data = {'staff_name': 'zz'}
+        data['openid'] = '6608c32f0a6e75ce0374df6123b4d1d4'
         if ListModel.objects.filter(openid=data['openid'], supplier_name=data['supplier_name'], is_delete=False).exists():
             raise APIException({"detail": "Data exists"})
         else:
