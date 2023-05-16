@@ -47,6 +47,7 @@ class APIViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         id = self.get_project()
+
         if self.request.user:
             if id is None:
                 return ListModel.objects.filter(openid=self.request.auth.openid, is_delete=False)
