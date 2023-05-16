@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'userlogin.apps.UserloginConfig',
     'userregister.apps.UserregisterConfig',
     'staff.apps.StaffConfig',
+    'supplier.apps.SupplierConfig',
 
     # 测试
     # 'fake_data',
@@ -131,3 +132,28 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 自定义 设置
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+    'VIEW',
+)
+
+STANDARD_LOG_FORMAT = (
+    "[%(asctime)s][%(name)s.%(funcName)s():%(lineno)d] [%(levelname)s] %(message)s"
+)
+CONSOLE_LOG_FORMAT = (
+    "[%(asctime)s][%(name)s.%(funcName)s():%(lineno)d] [%(levelname)s] %(message)s"
+)
+
+CSRF_COOKIE_SAMESITE = None
+
