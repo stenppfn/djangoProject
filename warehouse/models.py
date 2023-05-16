@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ListModel(models.Model):
     warehouse_name = models.CharField(max_length=255, verbose_name="Warehouse Name")
     warehouse_city = models.CharField(max_length=255, verbose_name="Warehouse City")
