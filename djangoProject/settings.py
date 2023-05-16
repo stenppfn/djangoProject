@@ -39,12 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 自定义app
+    'asn.apps.AsnConfig',
     'customer.apps.CustomerConfig',
     'userprofile.apps.UserprofileConfig',
     'userlogin.apps.UserloginConfig',
     'userregister.apps.UserregisterConfig',
     'staff.apps.StaffConfig',
     'supplier.apps.SupplierConfig',
+    'scanner.apps.ScannerConfig',
+    'stock.apps.StockConfig',
 
     # 测试
     # 'fake_data',

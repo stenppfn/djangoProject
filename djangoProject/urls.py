@@ -31,6 +31,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('myip/', views.myip, name='myip'),
+
     path('asn/', include('asn.urls')),
     path('customer/', include('customer.urls')),
     path('register/', include('userregister.urls')),
