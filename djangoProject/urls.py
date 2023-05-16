@@ -30,14 +30,15 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='')),
 
     path('admin/', admin.site.urls),
-    path('myip/', views.myip, name='myip'),
 
+    path('myip/', views.myip, name='myip'),
     path('asn/', include('asn.urls')),
     path('customer/', include('customer.urls')),
     path('register/', include('userregister.urls')),
     path('login/', include('userlogin.urls')),
     path('staff/', include('staff.urls')),
     path('supplier/', include('supplier.urls')),
+    path('goods/', include('goods.urls')),
 
     # 静态资源
     re_path(r'^favicon\.ico$', views.favicon, name='favicon'),

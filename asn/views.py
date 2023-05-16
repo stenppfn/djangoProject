@@ -1,13 +1,13 @@
 from django.db.models import Q
+from django.http import JsonResponse
 from django.utils import timezone
-from pip._vendor.requests import Response
+from rest_framework.response import Response
 from rest_framework import viewsets
 from dateutil.relativedelta import relativedelta
 from rest_framework.filters import OrderingFilter
 
 from scanner.models import ListModel as scanner
 from stock.models import StockListModel as stocklist
-
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.exceptions import APIException
@@ -18,6 +18,10 @@ from utils.md5 import Md5
 from . import serializers
 from .filter import AsnListFilter, AsnDetailFilter
 from .models import AsnListModel, AsnDetailModel
+
+
+def test(request):
+    return JsonResponse(FBMsg.ret())
 
 
 class AsnListViewSet(viewsets.ModelViewSet):

@@ -49,6 +49,15 @@ INSTALLED_APPS = [
     'scanner.apps.ScannerConfig',
     'stock.apps.StockConfig',
 
+    'goods.apps.GoodsConfig',
+    'goodsunit.apps.GoodsunitConfig',
+    'goodsclass.apps.GoodsclassConfig',
+    'goodsbrand.apps.GoodsbrandConfig',
+    'goodscolor.apps.GoodscolorConfig',
+    'goodsshape.apps.GoodsshapeConfig',
+    'goodsspecs.apps.GoodsspecsConfig',
+    'goodsorigin.apps.GoodsoriginConfig',
+
     # 测试
     # 'fake_data',
 
