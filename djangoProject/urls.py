@@ -39,6 +39,7 @@ urlpatterns = [
     path('staff/', include('staff.urls')),
     path('supplier/', include('supplier.urls')),
     path('goods/', include('goods.urls')),
+    path('goodsbrand/', include('goodsbrand.urls')),
 
     # 静态资源
     re_path(r'^favicon\.ico$', views.favicon, name='favicon'),
