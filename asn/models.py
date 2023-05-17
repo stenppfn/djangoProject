@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class AsnListModel(models.Model):
     asn_code = models.CharField(max_length=255, verbose_name="ASN Code")
     asn_status = models.BigIntegerField(default=1, verbose_name="ASN Status")
@@ -10,7 +11,7 @@ class AsnListModel(models.Model):
     creater = models.CharField(max_length=255, verbose_name="Who Created")
     bar_code = models.CharField(max_length=255, verbose_name="Bar Code")
     openid = models.CharField(max_length=255, verbose_name="Openid")
-    transportation_fee = models.JSONField(default=dict, verbose_name="Transportation Fee")
+    transportation_fee = models.TextField(default=str, verbose_name="Transportation Fee")
     is_delete = models.BooleanField(default=False, verbose_name='Delete Label')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name="Create Time")
     update_time = models.DateTimeField(auto_now=True, blank=True, null=True, verbose_name="Update Time")
@@ -20,6 +21,7 @@ class AsnListModel(models.Model):
         verbose_name = 'ASN List'
         verbose_name_plural = "ASN List"
         ordering = ['-id']
+
 
 class AsnDetailModel(models.Model):
     asn_code = models.CharField(max_length=255, verbose_name="ASN Code")
@@ -47,4 +49,3 @@ class AsnDetailModel(models.Model):
         verbose_name = 'ASN Detail'
         verbose_name_plural = "ASN Detail"
         ordering = ['-id']
-

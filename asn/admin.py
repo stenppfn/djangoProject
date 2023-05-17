@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import AsnListModel, AsnDetailModel
 
-# Register your models here.
+admin.site.register(AsnListModel)
+admin.site.register(AsnDetailModel)

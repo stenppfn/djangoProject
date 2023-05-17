@@ -10,9 +10,7 @@ from django.contrib.auth.models import User
 from staff.models import ListModel as staff
 import json, random, os
 from django.conf import settings
-
-
-# from scanner.models import ListModel as scanner
+from scanner.models import ListModel as scanner
 
 
 def randomPhone():
@@ -53,7 +51,6 @@ def randomStaffType():
 
 
 randombinproperty = ["Normal", "Holding", "Damage", "Inspection"]
-
 randombinsize = ["Big", "Floor", "Tiny", "Small"]
 
 
@@ -64,12 +61,12 @@ def test(request):
 @method_decorator(csrf_exempt, name='dispatch')
 def register(request, *args, **kwargs):
     # 获取请求数据转json
-    # post_data = json.loads(request.body.decode())
-    post_data = {
-        "name": "zz",
-        "password1": "123123",
-        "password2": "123123"
-    }
+    post_data = json.loads(request.body.decode())
+    # post_data = {
+    #     "name": "zz",
+    #     "password1": "123123",
+    #     "password2": "123123"
+    # }
     # 序列化
     data = {
         "name": post_data.get('name'),
