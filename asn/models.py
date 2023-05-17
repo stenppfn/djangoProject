@@ -11,7 +11,7 @@ class AsnListModel(models.Model):
     creater = models.CharField(max_length=255, verbose_name="Who Created")
     bar_code = models.CharField(max_length=255, verbose_name="Bar Code")
     openid = models.CharField(max_length=255, verbose_name="Openid")
-    transportation_fee = models.TextField(default=str, verbose_name="Transportation Fee")
+    transportation_fee = models.JSONField(default=dict, verbose_name="Transportation Fee")
     is_delete = models.BooleanField(default=False, verbose_name='Delete Label')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name="Create Time")
     update_time = models.DateTimeField(auto_now=True, blank=True, null=True, verbose_name="Update Time")

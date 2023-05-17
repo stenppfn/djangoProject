@@ -40,10 +40,18 @@ INSTALLED_APPS = [
 
     # 自定义app
     'asn.apps.AsnConfig',
+    'binset.apps.BinsetConfig',
     'customer.apps.CustomerConfig',
+    'cyclecount.apps.CyclecountConfig',
+    'company.apps.CompanyConfig',
+
+    'throttle.apps.ThrottleConfig',
+
     'userprofile.apps.UserprofileConfig',
     'userlogin.apps.UserloginConfig',
     'userregister.apps.UserregisterConfig',
+
+
     'staff.apps.StaffConfig',
     'supplier.apps.SupplierConfig',
     'scanner.apps.ScannerConfig',
@@ -57,6 +65,9 @@ INSTALLED_APPS = [
     'goodsshape.apps.GoodsshapeConfig',
     'goodsspecs.apps.GoodsspecsConfig',
     'goodsorigin.apps.GoodsoriginConfig',
+
+    'warehouse.apps.WarehouseConfig',
+    'payment.apps.PaymentConfig',
 
     # 测试
     # 'fake_data',
@@ -169,3 +180,75 @@ CONSOLE_LOG_FORMAT = (
 
 CSRF_COOKIE_SAMESITE = None
 
+
+REST_FRAMEWORK = {
+    # AttributeError: ‘AutoSchema’ object has no attribute ‘get_link’
+    #'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
+    # DEFAULT SET:
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.openapi.AutoSchema',
+    # EXCEPTION:
+    'EXCEPTION_HANDLER': 'utils.my_exceptions.custom_exception_handler',
+    # Base API policies:
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework_csv.renderers.CSVRenderer',
+        #'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': ['utils.auth.Authtication', ],
+    'DEFAULT_PERMISSION_CLASSES': ["utils.permission.Normalpermission", ],
+    'DEFAULT_THROTTLE_CLASSES': ['utils.throttle.VisitThrottle', ],
+    # 'DEFAULT_THROTTLE_RATES': ['utils.throttle.VisitThrottle', ],
+    'DEFAULT_CONTENT_NEGOTIATION_CLASS': 'rest_framework.negotiation.DefaultContentNegotiation',
+    'DEFAULT_METADATA_CLASS': 'rest_framework.metadata.SimpleMetadata',
+    'DEFAULT_VERSIONING_CLASS': None,
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 1,  # 默认 None
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        # 'django_filters.rest_framework.backends.DjangoFilterBackend',
+    ],
+    'SEARCH_PARAM': 'search',
+    'ORDERING_PARAM': 'ordering',
+    'NUM_PROXIES': None,
+    # Versioning:
+    'DEFAULT_VERSION': None,
+    'ALLOWED_VERSIONS': None,
+    'VERSION_PARAM': 'version',
+    # Authentication:
+    'UNAUTHENTICATED_USER': 'django.contrib.auth.models.AnonymousUser',
+    'UNAUTHENTICATED_TOKEN': None,
+    # View configuration:
+    'VIEW_NAME_FUNCTION': 'rest_framework.views.get_view_name',
+    'VIEW_DESCRIPTION_FUNCTION': 'rest_framework.views.get_view_description',
+    'NON_FIELD_ERRORS_KEY': 'non_field_errors',
+    # Testing
+    'TEST_REQUEST_RENDERER_CLASSES': [
+        'rest_framework.renderers.MultiPartRenderer',
+        'rest_framework.renderers.JSONRenderer'
+    ],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'multipart',
+    # Hyperlink settings
+    'URL_FORMAT_OVERRIDE': 'format',
+    'FORMAT_SUFFIX_KWARG': 'format',
+    'URL_FIELD_NAME': 'url',
+    # Encoding
+    'UNICODE_JSON': True,
+    'COMPACT_JSON': True,
+    'STRICT_JSON': True,
+    'COERCE_DECIMAL_TO_STRING': True,
+    'UPLOADED_FILES_USE_URL': True,
+    # Browseable API
+    'HTML_SELECT_CUTOFF': 1000,
+    'HTML_SELECT_CUTOFF_TEXT': "More than {count} items...",
+    # Schemas
+    'SCHEMA_COERCE_PATH_PK': True,
+    'SCHEMA_COERCE_METHOD_NAMES': {
+        'retrieve': 'read',
+        'destroy': 'delete'
+    },
+}

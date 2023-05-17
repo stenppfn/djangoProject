@@ -61,7 +61,8 @@ class AsnListViewSet(viewsets.ModelViewSet):
         id = self.get_project()
         if self.request.user:
             empty_qs = AsnListModel.objects.filter(
-                Q(openid=self.request.auth.openid, asn_status=1, is_delete=False) & Q(supplier=''))
+                # Q(openid=self.request.auth.openid, asn_status=1, is_delete=False) & Q(supplier=''))
+                Q(openid='b2e5d46b7e51d92c44926b720187c4c7', asn_status=1, is_delete=False) & Q(supplier=''))
             cur_date = timezone.now()
             date_check = relativedelta(day=1)
             if len(empty_qs) > 0:
